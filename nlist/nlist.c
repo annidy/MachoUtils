@@ -276,7 +276,7 @@ ofile_processor(
 	void *cookie)
 {
 	char *addr;
-	uint32_t offset, size, i, j;
+	uint32_t base, size, i, j;
 	uint32_t ncmds;
 	struct flags *flags;
 	struct load_command *lc;
@@ -294,12 +294,10 @@ ofile_processor(
 	 * If the ofile is not an object file then process it without reguard
 	 * to sections.
 	 */
-	if (ofile->object_addr == NULL)
-	{
-		warning("not macho file");
+	if (ofile->object_addr == NULL) {
 		return;
 	}
-
+	base = ofile->object_addr-ofile->file_addr;
 	/*
 	 * The ofile is an object file so process with reguard to it's sections.
 	 */
@@ -347,7 +345,7 @@ ofile_processor(
 
 				// 测试打印
 				if ((symbols[i].nl.n_type & N_TYPE) == N_SECT) {
-					printf("%016x %s\n", symbols[i].nl_addr, symbols[i].name);
+					printf("%016x %s\n", symbols[i].nl_addr+base, symbols[i].name);
 				}
 			}
 			free(symbols);

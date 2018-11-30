@@ -1,6 +1,6 @@
 export USE_APPLE_PB_SUPPORT = all
 
-DSTROOT = /
+DSTROOT = /Users/andy/Project/MachoUtils/cctools-886
 RC_OS = macos
 RC_CFLAGS =
 
