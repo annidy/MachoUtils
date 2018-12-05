@@ -6107,9 +6107,9 @@ check_dylinker_command:
 
 #ifndef OFI
 	    default:
-		Mach_O_error(ofile, "malformed object (unknown load command "
+		Mach_O_error(ofile, "~malformed object (unknown load command "
 			     "%u)", i);
-		goto return_bad;
+		// goto return_bad;
 #endif /* !defined(OFI) */
 	    }
 

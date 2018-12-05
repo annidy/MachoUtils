@@ -1,8 +1,8 @@
 export USE_APPLE_PB_SUPPORT = all
 
-DSTROOT = /Users/andy/Project/MachoUtils/cctools-886
+DSTROOT = .
 RC_OS = macos
-RC_CFLAGS =
+RC_CFLAGS = 
 
 INSTALLSRC_SUBDIRS = $(COMMON_SUBDIRS) $(SUBDIRS_32) ar include efitools \
 		     libmacho
