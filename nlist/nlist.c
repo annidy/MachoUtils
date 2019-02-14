@@ -349,6 +349,7 @@ ofile_processor(
 				}
 			}
 			free(symbols);
+			return;
 		}
 		lc = (struct load_command *)((char *)lc + lc->cmdsize);
 	}

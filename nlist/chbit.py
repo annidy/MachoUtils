@@ -1,8 +1,13 @@
 #!/usr/local/bin/python3
+# -*- coding: utf-8 -*-
 import sys
 import os
 import mmap
 
+'''
+Set/Unset
+chbit.py .a symbol
+'''
 
 dirname, _ = os.path.split(os.path.abspath(__file__))
 args = [os.path.join(dirname, "nlist")]
@@ -28,16 +33,18 @@ for line in result.stdout.decode('utf-8').splitlines():
             nold = int.from_bytes(oldb, byteorder='little')
             if nold & 1 == 0: 
                 nnew = nold + 1
+                tag = "Set"
             else:
                 nnew = nold - 1
+                tag = "Unset"
  
             with open(proc_file, 'r+b', 0) as fd:
                 mm = mmap.mmap(fd.fileno(), 0)
                 mm.seek(off)
                 mm.write_byte(nnew)
                 mm.close()
-
-            print(", "+hex(nold)+" -> "+hex(nnew))
+            
+            print(", "+tag)
 
     except:
         pass

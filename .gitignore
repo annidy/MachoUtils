@@ -47,3 +47,10 @@ DerivedData/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.gitignore.io/api/cmake,xcode
+
+*.o
+*.dSYM
+*.NEW
+*_dir
+*.tmp
+*_obj

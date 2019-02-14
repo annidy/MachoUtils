@@ -1,4 +1,6 @@
 #!/usr/local/bin/python3
+# -*- coding: utf-8 -*-
+
 '''
 nmcomm a1 a2
 对比相同导出符号
