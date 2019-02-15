@@ -10,11 +10,10 @@ chbit.py .a symbol
 '''
 
 dirname, _ = os.path.split(os.path.abspath(__file__))
-args = [os.path.join(dirname, "nlist")]
+args = [os.path.join(dirname, "nlist"), "-arch", "all"]
 args += sys.argv[1:-1]
 proc_file = args[-1]
 proc_symbol = sys.argv[-1]
-print(args)
 
 import subprocess
 result = subprocess.run(args, stdout=subprocess.PIPE)
@@ -23,8 +22,6 @@ for line in result.stdout.decode('utf-8').splitlines():
         addr, name = line.split()
         if name == proc_symbol:
             off = int(addr, 16)+4
-            print("write "+hex(off), end="")
-
 
             with open(proc_file, 'rb', 0) as fd:
                 fd.seek(off)
@@ -44,7 +41,7 @@ for line in result.stdout.decode('utf-8').splitlines():
                 mm.write_byte(nnew)
                 mm.close()
             
-            print(", "+tag)
+            print(hex(off)+"\t"+tag)
 
     except:
         pass
