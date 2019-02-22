@@ -45,7 +45,7 @@ def ar_symbol(path):
             files.append(afile)
             continue
         
-        m = re.search('(?<=T ).*', line)
+        m = re.search('(?<=[TD] ).*', line)
         if m:
             if afile != None:
                 afile.add(m.group())
